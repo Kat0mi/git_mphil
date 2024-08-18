@@ -1,0 +1,37 @@
+** Overview **
+
+Lacy et al. (2004; henceforth La04) developed the Lacy wedge to aid in quantifying the number of AGN missed in optical and soft x-ray surveys due to obscuration. While most AGN outshine their host in the X-ray, 2-10 keV surveys miss a significant fraction of moderately obscured AGN (N(H) = 10 ** 23 cm-2) and nearly all Compton-thick AGN (N(H) > 10 ** 24 cm-2). Gilli et al. (2007) predict that both are as numerous at high luminosity (log L(0.5 – 2 keV, erg s-1) > 43.5) as their unobscured counterparts, and may be up to four times as numerous at low luminosity (log L(0.5 – 2 keV, erg s-1) < 43.5). The obscured and Compton-thick AGN missed in deep X-ray surveys are therefore critical in constraining AGN models. While observations of heavily obscured AGN still suffer from extinction in the MIR regime, toroidal geometry dictates that emission should still be visible unless the AGN is either 1) viewed edge on, or 2) completely enveloped in dense circumnuclear matter. In the interest of minimising SFG contamination, Donley et al. (2012; henceforth Do12) refine the selection criteria of La04 to include an enclosed locus along which sources with perfect IRAC power-law SEDs were predicted to lie. 
+
+** Survey(s) **
+
+La04 utilises the preliminary IRAC and MIPS catalogues from Spitzer FLS data (2003), which has flux density limits of S3.6 ~ 7 µJy, S4.5 ~ 8 µJy, S5.8 ~ 60 µJy, and S8.0 ~ 50 µJy for nominal central wavelengths of 3.6, 4.5, 5.8, and 8.0 µm, and of S24 ~ 300 µJy for the MIPS 24 µm band. They crossmatch this data with the SDSS DR1 quasar catalogue, yielding a referential sample of 54 quasars from which to constrain a diagnostic region in IRAC colour-colour space (CCS). Do12 additionally employ the AGN catalogue of XMM-Newton.
+
+** Diagnostic Constraint **
+
+Using the Spitzer colours of SDSS quasars, Lao4 empirically define a region to recover sources with AGN-typical MIR-SEDs. They state that SED modelling based on ISO spectra (Sajina et al. 2004) supports their demarcation selection, though contamination from SFGs is expected at the boundaries. In an effort to identify a population of MIR-selected AGN that can be directly compared to their SDSS quasars, they define a threshold of S8.0 > 1 mJy (based on the S8.0 µm distributions of FLS sources that fall within their diagnostic boundaries) above which they state FLS AGN would appear in the SDSS sample were they not obscured. Of the 43 sources with clean S8.0 > 1mJy detections in the IRAC FLS catalogue, they eject 14 for being known SDSS quasars, two for being known radio quasars, and seven more for being either saturated stars or otherwise unreliable (this particular step was done by hand), leaving 20 bright, unobscured candidates. To confirm the nature of these objects, they generate a secondary CC plot extending into the MIPS 24 µm band and find that they reside in the same region as that of the SDSS quasars. All 20 were further identified in the R-band images of Fadda et al. (2004; limiting R ~ 25.5), with three being found to have MIR – optical colours and morphologies consistent with normal quasars. An additional candidate was ejected for being a suspected foreground star (R = 15.7). Of the remaining 16, 14 were found to be extended in the R-band such that they were most likely completely obscured in the optical. The remaining two were faint but point-like in nature and were thus likely to only be only partially obscured. Photometric redshift distributions (derived using ugri magnitudes through hyperz) yielded a median of z ~ 0.36 for obscured candidates, compared to a median of z ~ 0.69 for SDSS quasars with S8.0 > 1mJy. This may imply that obscured AGN are more populous at lower z and luminosities. They state that MIR selection is independent of optical properties and that selection effects are unlikely to account for this difference. They further note that a lower median z may be consistent with the large numbers of low luminosity (LL), relatively low z, obscured AGN implied by an imbalance in cosmic X-ray background, as well as the ‘receding torus’ model proposed by Lawrence (1991) wherein a higher fraction of LLAGN obscured. They state that their candidates – if unobscured – would be moderately luminous with B-band magnitudes of ~ -22, placing them between Sy1s and QSOs, while their most luminous candidate would place closer to the median of ~ -23 of their SDSS samples.
+
+To minimise contamination of SFGs and extend applicability to higher z populations, Do12 define an enclosed power-law locus (spanning -1 < α < 3, where AGN are expected to have red slopes of α < -0.5) along which sources with perfect IRAC power-law SEDs were predicted to lie. To quantify the dependence of their diagnostic approach on both IRAC flux densities and the systematically underestimated photometric errors of SExtractor (Sanders et al. 2007; due to a lack of consideration for correlated sky noise present in mosaiced data, used to calculate aperture-corrected IRAC photometry), they define a region around the locus that encloses most of their XMM sources with red (α < -0.5) IRAC colours. They state that the catalogued IRAC errors would recover only 5% of these sources, and hence adopt an error estimation of 10% moving forward. Due to only one IRAC channel sampling the red side of the 1.6 µm stellar bump at z > 3 (and all 4 sampling the blue side of this feature at z ~ 5), they define an additional 8.0/4.5 colour cut (using a spectroscopically confirmed sample of SFGs) to minimise the likelihood of contamination from high z galaxies with older stellar populations and/or measurable dust extinction whose spectra may mimic that of the power-law emission associated with AGN. 
+
+** Why Does it Work (In Theory)? **
+
+To para/phrase La04 and Do12; The MIR continuum of galaxies arises primarily from three sources: HII regions dominated by emission from very small dust grains (producing a steeply rising continuum at 12-16 µm), photodissociation region dominated by bands of polycyclic aromatic hydrocarbon (PAH) emission, and AGN dominated by a strong 3-10 µm  continuum. When sufficiently luminous, the superposition of emission from AGN-heated circumnuclear dust will fill the dip between the 1.6 µm stellar bump and that of SF-heated dust observed in SFG SEDs, producing a red, power-law-like thermal continuum spanning the IRAC bands.
+ 
+** Equations **
+
+x = log (S5.8 / S3.6); y = log (S8.0 / S4.5)
+
+----- La04 -----
+
+x > -0.1
+y > -0.2
+y > 0.8 * x + 0.5
+
+----- Do12 -----
+
+x > 0.08
+y > 0.15
+y > (1.12 * x) – 0.27
+y < (1.12 * x) + 0.27
+F(4.5) > F(3.6) 	&	 F(5.8) > F(4.5)	&	F(8.0) > F(5.8)
+
+
