@@ -133,19 +133,19 @@ def main():
     output_to_window = True
 
     if diagnostic_choice == "lacy wedge":
-        info = read_text_file('/Users/jess/Desktop/git_python/txt/lacy.txt')
+        info = read_text_file('/Users/jess/Desktop/git_mphil/txt/lacy.txt')
         header = "Lacy Wedge"
         image_path = "/Users/jess/Desktop/diagnostic_plots/diagnostic_info/lacy_cdfs.png"
         links = ["https://iopscience.iop.org/article/10.1086/422816/pdf"]
 
     elif diagnostic_choice == "stern wedge":
-        info = read_text_file('/Users/jess/Desktop/stern.txt')
+        info = read_text_file('/Users/jess/Desktop/git_mphil/txt/stern.txt')
         header = "Stern Wedge"
         image_path = "/Users/jess/Desktop/diagnostic_plots/ir/lacy_donley_32.png"
         links = ["https://iopscience.iop.org/article/10.1086/422816/pdf"]
 
     elif diagnostic_choice == "ki/m":
-        info = read_text_file('/Users/jess/Desktop/kim.txt')
+        info = read_text_file('/Users/jess/Desktop/git_mphil/txt/ki.txt')
         header = "KI/M Diagnostic"
         image_path = "/Users/jess/Desktop/diagnostic_plots/ir/ki_31.png"
         links = ["https://iopscience.iop.org/article/10.1086/422816/pdf"]
