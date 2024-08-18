@@ -36,9 +36,9 @@ from tkinter import filedialog, simpledialog, messagebox
 
 # ----- Data -----
 
-cdfs = pd.read_csv(os.path.join('/', 'Users', 'jess', 'Desktop', 'data', 'raw', 'cdfs', 'cdfs_in_df.csv'))
-cos = pd.read_csv(os.path.join('/', 'Users', 'jess', 'Desktop', 'data', 'raw', 'cosmos', 'cos_in_df.csv'))
-uds = pd.read_csv(os.path.join('/', 'Users', 'jess', 'Desktop', 'data', 'raw', 'uds', 'uds_in_df.csv'))
+cdfs = pd.read_csv(os.path.join('/', 'Users', 'jess', 'Desktop', 'git_mphil', 'git_data', 'cdfs.csv'))
+cos = pd.read_csv(os.path.join('/', 'Users', 'jess', 'Desktop', 'git_mphil', 'git_data', 'cos.csv'))
+uds = pd.read_csv(os.path.join('/', 'Users', 'jess', 'Desktop', 'git_mphil', 'git_data', 'uds.csv'))
 
 all = pd.concat([cdfs, cos, uds])
 

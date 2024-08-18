@@ -104,6 +104,6 @@ for spine in ax_inset.spines.values():
 
 # ----- Save and Output -----
     
-fig.savefig('/Users/jess/Desktop/git_python/outputs/misc/z_relation.png', bbox_inches = 'tight', dpi = 300, transparent = False)
+fig.savefig('/Users/jess/Desktop/git_mphil/outputs/misc/z_relation.png', bbox_inches = 'tight', dpi = 300, transparent = False)
 
 plt.show()

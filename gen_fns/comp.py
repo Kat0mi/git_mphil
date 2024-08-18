@@ -77,6 +77,6 @@ ax.xaxis.labelpad = 15; ax.yaxis.labelpad = 15
 ax.legend(loc = 'lower right', fontsize = '15', frameon = True)
 
 
-fig.savefig('/Users/jess/Desktop/git_python/outputs/misc/z_lmass_comp.png', bbox_inches = 'tight', dpi = 300, transparent = False)
+fig.savefig('/Users/jess/Desktop/git_mphil/outputs/misc/z_lmass_comp.png', bbox_inches = 'tight', dpi = 300, transparent = False)
 
 plt.show()

@@ -45,6 +45,6 @@ venn.get_label_by_id("110").set_x(0.12); venn.get_label_by_id("110").set_y(0.29)
 
 # -- Save and Output --
 
-plt.savefig('/Users/jess/Desktop/git_python/outputs/misc/venn.png', bbox_inches = 'tight', dpi = 300, facecolor = 'white', transparent = False)
+plt.savefig('/Users/jess/Desktop/git_mphil/outputs/misc/venn.png', bbox_inches = 'tight', dpi = 300, facecolor = 'white', transparent = False)
 
 plt.show()
