@@ -23,7 +23,7 @@ import sys
 
 from numpy import cov
 from astropy.io import fits
-from matplotlib_venn import venn3
+# from matplotlib_venn import venn3
 from matplotlib.lines import Line2D
 from sklearn.decomposition import PCA
 from matplotlib.patches import PathPatch
