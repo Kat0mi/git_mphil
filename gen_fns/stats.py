@@ -21,7 +21,7 @@ for col in diagnostics:
 
     for df in dfs:
 
-        vals = df['agn_luminosity'][df[col] == 1].dropna().values
+        vals = df['log_agn_luminosity'][df[col] == 1].dropna().values
         
         # -- Independent NMADs --
 
@@ -30,7 +30,7 @@ for col in diagnostics:
 
         # -- Dependent NMADs --
 
-        nmad_dep = 1.48 * np.median(np.abs(vals - np.median(df['agn_luminosity'].dropna().values)))
+        nmad_dep = 1.48 * np.median(np.abs(vals - np.median(df['log_agn_luminosity'].dropna().values)))
         results[col]['Dependent NMAD'].append(nmad_dep)
 
         # -- Mean, Median, SD --
@@ -53,5 +53,13 @@ with open('stats.txt', 'w') as f:
 
         f.write(f"{col}:\n")
         df_output = pd.DataFrame(results[col], index = field_names)
-        f.write(df_output.to_string(float_format="{:.4E}".format))
+
+        # -- Log Luminosity [toggle] --
+
+        f.write(df_output.to_string(float_format = "{:.4f}".format))
+
+        # -- Base Luminosity [toggle] --
+
+        # f.write(df_output.to_string(float_format = "{:.4E}".format))
+
         f.write("\n\n")

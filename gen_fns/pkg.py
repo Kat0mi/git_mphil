@@ -16,6 +16,7 @@ import tkinter as tk
 import importlib.util
 import inspect
 import sys
+import decimal
 
 
 
@@ -31,6 +32,8 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.gridspec import GridSpec
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from tkinter import filedialog, simpledialog, messagebox
+from sklearn.preprocessing import StandardScaler
+from decimal import Decimal, getcontext
 
 
 
