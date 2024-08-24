@@ -6,19 +6,14 @@ import seaborn as sns
 
 # ----- Function Body -----
 
-def lacy(datasets, xd, yd, masks = None, save_path = None, dataset_names = None, colour_bar = None):
+def uvj(datasets, xd, yd, masks = None, save_path = None, dataset_names = None, colour_bar = None):
     num_datasets = len(datasets)
 
-    fig, axs = plt.subplots(nrows = 1, ncols = num_datasets, sharey = True, figsize = (10, 10))
+    fig, axs = plt.subplots(nrows = 1, ncols = num_datasets, sharey = True, figsize = (30, 10))
     plt.subplots_adjust(wspace = 0.0)
 
     if num_datasets == 1:
         axs = [axs]
-
-    # -- Lacy Boundaries --
-        
-    x1 = np.linspace(-0.1, 1.5, 100)
-    y1, y2 = -0.2, 0.8 * x1 + 0.5
 
     # -- Plot Parameters --
 
@@ -132,53 +127,55 @@ def lacy(datasets, xd, yd, masks = None, save_path = None, dataset_names = None,
 
         # -- General Aesthetics --
                 
-        ax.set_xlim([-1, 1.5]); ax.set_ylim([-1, 1.5])
-        ax.set_xticks(np.arange(-1, 1.5, 0.5)); ax.set_yticks(np.arange(-1, 1.5, 0.5))
+        ax.set_xlim([0, 2]); ax.set_ylim([0, 2.5])
+        ax.set_xticks(np.arange(0, 2, 0.5)); ax.set_yticks(np.arange(0, 2.5, 0.5))
         ax.tick_params(axis = "x", direction = "in"); ax.tick_params(axis = "y", direction = "in")
 
         xticks = ax.xaxis.get_major_ticks(); yticks = ax.yaxis.get_major_ticks()
         xticks[0].label1.set_visible(False); yticks[0].label1.set_visible(False)
 
-        ax.set_facecolor('#e0e8ff')
-        ax.axhline(0.25, color = 'w', linewidth = 1, linestyle = '--', zorder = 1)
-        ax.axvline(0.25, color = 'w', linewidth = 1, linestyle = '--', zorder = 1)
-
         ax.xaxis.labelpad = 15; ax.yaxis.labelpad = 15
 
         # -- Axes Labels and Legend --
 
-        ax.set_xlabel('$log (S_{8.0}/S_{4.5})$', size = '20')
+        ax.set_xlabel('Restframe V - J', size = '20')
 
         if i == 0:
-            ax.set_ylabel('$log (S_{5.8}/S_{3.6})$', size = '20')
+            ax.set_ylabel('Restframe U - V', size = '20')
 
         if colour_bar is None and i == 0 and agn_columns_available:
             ax.legend(loc = 'upper left', fontsize = '15', frameon = True)
 
-        ax.text(1.4, -0.9, dataset_name, fontsize = 20, ha = 'right')
+        ax.text(0.1, 0.1, dataset_name, fontsize = 20, ha = 'left')
 
-        # -- Lacy --
+        # -- Quiescent/SF Boundary --
 
-        ax.fill_between(x1, y1, y2, color = 'w', alpha = 0.3, zorder = 2)
-        ax.fill_between(x1, y1, y2, color = 'none', edgecolor = 'white', alpha = 1, zorder = 4, linewidth = 3.5)
-        ax.fill_between(x1, y1, y2, color = 'none', edgecolor = 'black', alpha = 1, zorder = 4, linewidth = 1.5)
+        ax.plot([-0.5, 0.85], [1.3, 1.3], 'w-', linewidth = 3)
+        ax.plot([0.85, 1.6], [1.3, 1.95], 'w-', linewidth = 3)
+        ax.plot([1.6, 1.6], [1.95, 2.5], 'w-', linewidth = 3)
 
-        # -- Donley --
+        ax.plot([-0.5, 0.85], [1.3, 1.3], 'k-', linewidth = 1.5)
+        ax.plot([0.85, 1.6], [1.3, 1.95], 'k-', linewidth = 1.5)
+        ax.plot([1.6, 1.6], [1.95, 2.5], 'k-', linewidth = 1.5)
 
-        line_params_black = {'color': 'black', 'linewidth': 1.5, 'linestyle': '-', 'zorder': 5}
-        line_params_white = {'color': 'white', 'linewidth': 3.5, 'linestyle': '-', 'zorder': 5}
-        donley_scatter_params = {'s': 50, 'color': 'black', 'marker': 'o', 'edgecolor': 'k', 'linewidth': 0.5, 'zorder': 5}
+        # -- SF/Dusty SF Boundary --
 
-        ax.plot([0.1, 0.61], [0.13, 0.75], color = 'black', linewidth = 1, linestyle = '-', zorder = 5)
+        ax.plot([1.2, 1.2], [0, 1.6], 'w-', linewidth = 3)
+        ax.plot([1.2, 1.2], [0, 1.6], 'k-', linewidth = 1.5)
 
-        ax.scatter([0.1, 0.202, 0.304, 0.406, 0.508, 0.61], [0.13, 0.254, 0.378, 0.502, 0.626, 0.75], **donley_scatter_params)
-        lines = [([0.35, 0.93], [0.15, 0.85]), ([0.93, 0.7], [0.85, 1.12]), ([0.7, 0.08], [1.12, 0.36]), ([0.08, 0.08], [0.36, 0.15]), ([0.08, 0.35], [0.15, 0.15])]
-        
-        for x, y in lines:
-            ax.plot(x, y, **line_params_white)
+        # -- Colour Regions --
 
-        for x, y in lines:
-            ax.plot(x, y, **line_params_black)
+        ax.fill_between([-0.5, 0.85, 1.6], [1.3, 1.3, 1.95], [2.5, 2.5, 2.5], color = 'xkcd:salmon', alpha = 0.05)
+        ax.fill_between([-0.5, 0.85, 1.2], [1.3, 1.3, 1.6], [0, 0, 0], color = 'xkcd:periwinkle blue', alpha = 0.05)
+        ax.fill_between([1.2, 1.6, 1.6, 2.1], [1.6, 1.95, 2.5, 2.5], [0, 0, 0, 0], color = 'xkcd:hospital green', alpha = 0.05)
+
+        # -- Region labels --
+
+        ax.text(0.1, 1.5, 'Quiescent', fontsize = 24, ha = 'left', color = 'xkcd:salmon')
+        ax.text(0.1, 1.1, 'Star Forming', fontsize = 24, ha = 'left', color = 'xkcd:periwinkle blue')
+        ax.text(1.9, 0.1, 'Dusty', fontsize = 24, ha = 'right', color = 'xkcd:hospital green')
+
+    # -- Colour Bar --
 
     if colour_bar and scatter_plots:
        
@@ -190,6 +187,6 @@ def lacy(datasets, xd, yd, masks = None, save_path = None, dataset_names = None,
         cbar.ax.tick_params(labelsize = 15)
 
     if save_path:
-        fig.savefig(save_path, bbox_inches = 'tight', dpi = 600, transparent = False)
+        fig.savefig(save_path, bbox_inches = 'tight', dpi = 300, transparent = False)
 
     plt.show()

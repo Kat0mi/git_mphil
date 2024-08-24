@@ -42,21 +42,21 @@ def kim(datasets, xd, yd, masks = None, save_path = None, dataset_names = None, 
     # -- Masks --
 
     scatter_plots = []
-    global_min = np.inf
-    global_max = -np.inf
+    #global_min = np.inf
+    #global_max = -np.inf
 
-    for i, df in enumerate(datasets):
+    #for i, df in enumerate(datasets):
 
-        if colour_bar in df.columns:
+        #if colour_bar in df.columns:
 
-            min_val = df[colour_bar].min()
-            max_val = df[colour_bar].max()
+            #min_val = df[colour_bar].min()
+            #max_val = df[colour_bar].max()
 
-            if min_val < global_min:
-                global_min = min_val
+            #if min_val < global_min:
+                #global_min = min_val
 
-            if max_val > global_max:
-                global_max = max_val
+            #if max_val > global_max:
+                #global_max = max_val
 
     for i, (ax, df, dataset_name) in enumerate(zip(axs, datasets, dataset_names)):
 
@@ -95,9 +95,9 @@ def kim(datasets, xd, yd, masks = None, save_path = None, dataset_names = None, 
                 y = df[yd[i]], 
                 c = df[colour_bar], 
                 cmap = 'winter',
-                s = 40,
-                vmin = global_min,
-                vmax = global_max,
+                s = 40
+                #vmin = global_min,
+                #vmax = global_max,
             )
 
             scatter_plots.append(scatter)
@@ -163,14 +163,14 @@ def kim(datasets, xd, yd, masks = None, save_path = None, dataset_names = None, 
         ax.plot([0.8, -0.4], [0.5, 4], color = 'black', linewidth = 1, linestyle = '-', zorder = 4)
         ax.plot([0.8, 2.5], [0.5, 0.5], color = 'black', linewidth = 1, linestyle = '-', zorder = 4)
 
-    if colour_bar and scatter_plots:
+    #if colour_bar and scatter_plots:
        
-        if hasattr(axs, 'ravel'):
-            cbar = plt.colorbar(scatter_plots[0], ax = axs.ravel().tolist(), label = colour_bar)
+        #if hasattr(axs, 'ravel'):
+            #cbar = plt.colorbar(scatter_plots[0], ax = axs.ravel().tolist(), label = colour_bar)
 
-        else:
-            cbar = plt.colorbar(scatter_plots[0], ax = axs, label = colour_bar)
-        cbar.ax.tick_params(labelsize = 15)
+        #else:
+            #cbar = plt.colorbar(scatter_plots[0], ax = axs, label = colour_bar)
+        #cbar.ax.tick_params(labelsize = 15)
 
     if save_path:
         fig.savefig(save_path, bbox_inches = 'tight', dpi = 300, transparent = False)
