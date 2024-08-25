@@ -135,7 +135,7 @@ def main():
     if diagnostic_choice == "lacy wedge":
         info = read_text_file('/Users/jess/Desktop/git_mphil/txt/lacy.txt')
         header = "Lacy Wedge"
-        image_path = "/Users/jess/Desktop/diagnostic_plots/diagnostic_info/lacy_cdfs.png"
+        image_path = "/Users/jess/Desktop/lacy_test.svg"
         links = ["https://iopscience.iop.org/article/10.1086/422816/pdf"]
 
     elif diagnostic_choice == "stern wedge":

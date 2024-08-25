@@ -195,7 +195,7 @@ def run_diagnostic():
 
     # -- Select Save Path --
             
-    save_path = filedialog.asksaveasfilename(title = "Save plot as", defaultextension = ".png", filetypes = [("PNG Files", "*.png")])
+    save_path = filedialog.asksaveasfilename(title = "Save plot as", defaultextension = ".svg", filetypes = [("SVG Files", "*.svg")])
 
     if not save_path:
         return
