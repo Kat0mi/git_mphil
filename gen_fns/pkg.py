@@ -34,6 +34,7 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from tkinter import filedialog, simpledialog, messagebox
 from sklearn.preprocessing import StandardScaler
 from decimal import Decimal, getcontext
+from astropy.stats import median_absolute_deviation
 
 
 
