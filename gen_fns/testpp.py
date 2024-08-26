@@ -10,15 +10,15 @@ vars = ['HR', 'Av', 'lmass', 'lsfr', 'lssfr', 're', 'si', 'z']
 
 all = all.replace([-99, -999], np.nan)
 
-# -- Remove sources with z > 8 --
+all = all[~all.index.duplicated(keep = 'first')]
 
-# -- Handle Duplicate Indices --
+# -- Sub Sources --
 
-# Drop duplicate indices, keeping the first occurrence
-all = all[~all.index.duplicated(keep='first')]
-
-# Alternatively, reset the index if you need to preserve all rows but avoid duplicate labels
-# all = all.reset_index(drop=True)
+all = all[all['class'] != 'NIL']
+all = all[all['class'] != 'L']
+#all = all[all['class'] != 'D']
+#all = all[all['class'] != 'KI']
+#all = all[all['class'] != 'KIM']
 
 # -- Plot Parameters --
 
@@ -35,11 +35,12 @@ diag_kws = {
 # ----- Plot -----
 
 g = sns.pairplot(all,
-                 vars=vars,
-                 hue="agn",
-                 markers='o',
-                 plot_kws=plot_kws,
-                 diag_kws=diag_kws)
+                 vars = vars,
+                 hue = "class",
+                 kind = 'kde',
+                 markers = 'o',
+                 plot_kws = {'color': 'xkcd:grey'},
+                 diag_kws = diag_kws)
 
 # -- Axes Customisation --
 
@@ -51,8 +52,8 @@ for ax in g.axes.flatten():
 
 # -- Title --
 
-plt.suptitle('all: AGN == 0', size=20, y=1.02)
+plt.suptitle('all: AGN == 0', size = 20, y = 1.02)
 
 # -- Save --
 
-plt.savefig('/Users/jess/Desktop/testpp.png', bbox_inches='tight', dpi=300, facecolor='white', transparent=False)
+plt.savefig('/Users/jess/Desktop/testpp.png', bbox_inches = 'tight', dpi = 300, facecolor = 'white', transparent = False)
