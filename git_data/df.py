@@ -391,6 +391,8 @@ for data in [cdfs, cos, uds]:
     data['Donley'] = np.where((data['58_36'] > 0.08) & (data['80_45'] > 0.15) & (data['80_45'] > ((1.21 * data['58_36']) - 0.27)) & (data['80_45'] < ((1.21 * data['58_36']) + 0.27)) & (data['f_45'] > data['f_36']) & (data['f_58'] > data['f_45']) & (data['f_80'] > data['f_58']), 1, 0)
     data['KI'] = np.where((data['45_80_in'] > 0) & (data['Ks_45_in'] > 0), 1, 0)
     data['KIM'] = np.where((data['80_24_in'] > 0.5) & (data['80_24_in'] > (-2.9 * data['45_80_in'] + 2.8)), 1, 0)
+    
+    data['Quiescent'] = np.where((data['U_V'] > 1.23) & (data['V_J'] < 1.67) & (data['U_V'] < data['V_J'] * 0.98 + 0.38), 1, 0)
 
     # -- Classes -- #
 
