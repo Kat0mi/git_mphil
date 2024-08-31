@@ -79,6 +79,6 @@ plt.xlim(-4, 10); plt.ylim(-2, 8)
 plt.xlabel('PCA1'); plt.ylabel('PCA2')
 plt.legend(loc = 'upper left')
 
-plt.savefig('/Users/jess/Desktop/git_mphil/outputs/misc/pca_z_all.png', bbox_inches = 'tight', dpi = 300, facecolor = 'white', transparent = False)
+plt.savefig('/Users/jess/Desktop/git_mphil/outputs/misc/pca/pca_z_all.png', bbox_inches = 'tight', dpi = 300, facecolor = 'white', transparent = False)
 
 plt.show()
